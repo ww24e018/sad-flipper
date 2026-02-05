@@ -1,6 +1,6 @@
 package at.technikum.flipper;
 
-public class SuperFlipper2000 extends Flipper {
+public class SuperPinballMachine2000 extends PinballMachine {
 
     @Override
     public String getVersionString() {

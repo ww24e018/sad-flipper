@@ -1,8 +1,8 @@
 package at.technikum.flipper;
 
-public class Flipper {
+public class PinballMachine {
 
-    public Flipper() {
+    public PinballMachine() {
 
     }
 
