@@ -9,5 +9,6 @@ public class FL2kEntryTest {
 
         super2kInputMed.rightFlipperButton.wasJustPressed();
         super2kInputMed.leftFlipperButton.wasJustPressed();
+        super2kInputMed.unusedButton.wasJustPressed();
     }
 }
