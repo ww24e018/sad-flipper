@@ -12,5 +12,10 @@ In this case one interface for all create methods seemed sufficient.
 `AsciiArtStdoutConstructable` assumes print will print via `System.out` 
 and defines a constructor that takes a multiline string for configuration.
 
+# Adapter
 
+Feels a liiittle far-fetched atm but `PrintAsciiArtCmd` might be argued as a kind-of an adapter
+in that I desired for a command for printing to test the command builder, 
+and a simple "wrapper" to call `print` of an AsciiArt-Implementing-Thing seemed 
+the simplest ... connection in the context.
 
