@@ -2,7 +2,6 @@ package at.technikum.flipper;
 
 import at.technikum.flipper.input.SuperPinballMachine2000InputMediator;
 import at.technikum.flipper.output.ascii.BannerFactoryFutureFont;
-import at.technikum.flipper.output.ascii.BannerFactoryGraffityFont;
 
 public class FL2kEntryTest {
     public static void main(String[] args) {
