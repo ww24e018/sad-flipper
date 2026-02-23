@@ -23,8 +23,8 @@ public class FL2kEntryTest {
         bannerFactory.CreateBall2().print();
         bannerFactory.CreateBall3().print();
 
-        var printAllTheBanners = new StandardCommandBuilder()
-                .add()
+        var printAllTheBanners = new StandardCommandBuilder();
+               // .add()
 
     }
 }
