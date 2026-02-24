@@ -7,6 +7,9 @@ import at.technikum.flipper.output.ascii.AbstractBannerFactory;
 import at.technikum.flipper.output.ascii.BannerFactoryFutureFont;
 import at.technikum.flipper.output.ascii.BannerFactoryGraffityFont;
 import at.technikum.flipper.output.ascii.PrintAsciiArtCmd;
+import at.technikum.flipper.structureetal.CompTreeTraversalVisitor;
+import at.technikum.flipper.structureetal.DebugNoSuchComponent;
+import at.technikum.flipper.structureetal.DebugNoSuchCompositum;
 
 public class FL2kEntryTest {
     public static void main(String[] args) {
@@ -22,6 +25,33 @@ public class FL2kEntryTest {
         testPrintBanners(new BannerFactoryFutureFont()).execute();
 
         unwiseCommandBuilding();
+
+        firstCompTraversalTest();
+
+    }
+
+    private static void firstCompTraversalTest() {
+        var comp1 = new DebugNoSuchComponent("hello world");
+        var comp2 = new DebugNoSuchComponent("hello world no2");
+        var myFirstCompositum = new DebugNoSuchCompositum("myFirstCompositum")
+                .addComponent(comp1)
+                .addComponent(comp2);
+        var myFirstVisitor = new CompTreeTraversalVisitor();
+
+        System.out.println("Running Visitor for my first compositum:");
+        System.out.println("----------------------------------------");
+        myFirstVisitor.visit(myFirstCompositum);
+
+        // well. this works. ofc it does.
+        System.out.println("\n\nRunning Visitor for second (and of course awesome) compositum:");
+        System.out.println("------------------------------------------------------------------");
+        var mySecondCompositum = new DebugNoSuchCompositum("mySecondAndAwesomeCompositum")
+                .addComponent(myFirstCompositum)
+                .addComponent(myFirstCompositum);
+
+        myFirstVisitor
+                .resetThreadUnsafeIterationDepthCounter()
+                .visit(mySecondCompositum);
 
     }
 
@@ -48,7 +78,7 @@ public class FL2kEntryTest {
         try {
             builderOne.execute();
         } catch (StackOverflowError error) {
-            System.out.format("Stacktrace-size at termination of unwise.execute(): %d",
+            System.out.format("Stacktrace-size at termination of unwise.execute(): %d\n",
                     error.getStackTrace().length);
         }
 
