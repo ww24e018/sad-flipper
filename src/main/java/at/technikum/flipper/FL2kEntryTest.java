@@ -21,6 +21,8 @@ public class FL2kEntryTest {
         testPrintBanners(new BannerFactoryGraffityFont()).execute();
         testPrintBanners(new BannerFactoryFutureFont()).execute();
 
+        unwiseCommandBuilding();
+
     }
 
     private static Command testPrintBanners(AbstractBannerFactory bannerFactory) {
@@ -32,4 +34,24 @@ public class FL2kEntryTest {
                 .add(new PrintAsciiArtCmd(bannerFactory.CreateBall3()))
                 ;
     }
+
+    private static void unwiseCommandBuilding() {
+
+        var builderOne = new StandardCommandBuilder();
+        var builderTwo = new StandardCommandBuilder();
+        var builderThree = new StandardCommandBuilder();
+
+        builderOne.add(builderTwo);
+        builderTwo.add(builderThree);
+        builderThree.add(builderOne);
+
+        try {
+            builderOne.execute();
+        } catch (StackOverflowError error) {
+            System.out.format("Stacktrace-size at termination of unwise.execute(): %d",
+                    error.getStackTrace().length);
+        }
+
+    }
+
 }
