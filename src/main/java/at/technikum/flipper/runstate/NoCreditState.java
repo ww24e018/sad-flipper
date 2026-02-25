@@ -14,14 +14,13 @@ public class NoCreditState implements MachineRunState{
     }
 
     @Override
-    public Command handleCoinInsertion() {
-        // all coins are one.
-        //this.pinballMachine.addCredit();
-        return null; //TODO; perhaps this.pinball
+    public void handleCoinInsertion() {
+        // all coins are one. and give 3 credits.
+        pinballMachine.takeCoin();
     }
 
     @Override
-    public Command handleButtonPress(Button button) {
+    public Command reactionToButtonPress(Button button) {
         // no credit means no movement
         return NoOpCommand.getInstance();
     }

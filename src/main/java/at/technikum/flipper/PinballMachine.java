@@ -1,12 +1,14 @@
 package at.technikum.flipper;
 
-public class PinballMachine {
+import at.technikum.flipper.runstate.MachineRunState;
 
-    public PinballMachine() {
+public interface PinballMachine {
 
-    }
+    void takeCoin();
+    void releaseCoin();
+    void changeStateTo(MachineRunState machineRunState);
 
-    public String getVersionString() {
+    default  String getVersionString() {
         return "Flipper, by Flippers (Inc.)";
     }
 }
