@@ -7,6 +7,7 @@ import at.technikum.flipper.output.ascii.AbstractBannerFactory;
 import at.technikum.flipper.output.ascii.BannerFactoryFutureFont;
 import at.technikum.flipper.output.ascii.BannerFactoryGraffityFont;
 import at.technikum.flipper.output.ascii.PrintAsciiArtCmd;
+import at.technikum.flipper.structureetal.CapsLockComponentDecorator;
 import at.technikum.flipper.structureetal.CompTreeTraversalVisitor;
 import at.technikum.flipper.structureetal.DebugNoSuchComponent;
 import at.technikum.flipper.structureetal.DebugNoSuchCompositum;
@@ -27,15 +28,35 @@ public class FL2kEntryTest {
         unwiseCommandBuilding();
 
         firstCompTraversalTest();
+        tryingTheUppercaseDecorator();
+
+
+    }
+
+    private static void tryingTheUppercaseDecorator() {
+        System.out.println("Trying the uppercase decorator");
+        System.out.println("------------------------------");
+
+        var component = new DebugNoSuchComponent("This Is A Text (Component)");
+        var decoratedComponent = new CapsLockComponentDecorator(new DebugNoSuchComponent("This Is A Text (OtherComponent)"));
+        var compositum = new DebugNoSuchCompositum("This Is A Text (Compositum)");
+        compositum.addComponent(decoratedComponent);
+        compositum.addComponent(component);
+        var decoratedCompositum = new CapsLockComponentDecorator(compositum);
+
+        new CompTreeTraversalVisitor().visit(decoratedCompositum);
+        new CompTreeTraversalVisitor().visit(compositum);
+
 
     }
 
     private static void firstCompTraversalTest() {
-        var comp1 = new DebugNoSuchComponent("hello world");
+        var comp0 = new DebugNoSuchComponent("hello world");
+        var comp1 = new CapsLockComponentDecorator(comp0);
         var comp2 = new DebugNoSuchComponent("hello world no2");
         var myFirstCompositum = new DebugNoSuchCompositum("myFirstCompositum")
                 .addComponent(comp1)
-                .addComponent(comp2);
+                .addComponent(new CapsLockComponentDecorator(comp2));
         var myFirstVisitor = new CompTreeTraversalVisitor();
 
         System.out.println("Running Visitor for my first compositum:");
@@ -47,11 +68,15 @@ public class FL2kEntryTest {
         System.out.println("------------------------------------------------------------------");
         var mySecondCompositum = new DebugNoSuchCompositum("mySecondAndAwesomeCompositum")
                 .addComponent(myFirstCompositum)
-                .addComponent(myFirstCompositum);
+                .addComponent(new CapsLockComponentDecorator(myFirstCompositum));
+
+        var mySecondCompositum2 = new CapsLockComponentDecorator(new DebugNoSuchCompositum("mySecondAndAwesomeCompositum")
+                .addComponent(myFirstCompositum));
+
 
         myFirstVisitor
                 .resetThreadUnsafeIterationDepthCounter()
-                .visit(mySecondCompositum);
+                .visit(mySecondCompositum2);
 
     }
 

@@ -11,6 +11,7 @@ public class DebugNoSuchComponent implements Component {
     public DebugNoSuchComponent(String name) {
         this.name = name;
     }
+
     public String toString() {
         return String.format("%s %s","DebugNoSuchComponent: ", this.name);
     }
