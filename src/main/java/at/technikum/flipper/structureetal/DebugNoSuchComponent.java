@@ -1,5 +1,10 @@
 package at.technikum.flipper.structureetal;
 
+/**
+ * An implementation of Component with the purpose of testing
+ * the related visitor and compositum architecture.
+ * No pinball-related functionality.
+ */
 public class DebugNoSuchComponent implements Component {
 
     private final String name;

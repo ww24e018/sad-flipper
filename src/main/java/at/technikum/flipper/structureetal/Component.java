@@ -1,5 +1,9 @@
 package at.technikum.flipper.structureetal;
 
+
+/**
+ * Base interface for visitor/compositum nodes
+ */
 public interface Component {
     default Compositum getCompositum() {
         return null;

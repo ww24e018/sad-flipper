@@ -52,3 +52,20 @@ One looses IDE autocompletion and static analysis capabilities that way, though.
 
 Code got smaller in the refactor, OTOH. 
 
+# Kompositum and Visitor (combined)
+
+After exploring having them separate I decided to do a Compositum pattern where the main operation 
+is (only) a visitor-pattern-compatible interface, for a start (so only 2 patterns at once).
+
+Interfaces:
+- Component
+- Compositum
+- ComponentVisitor
+
+An example Visitor doing a tree-structure output print exists in CompTreeTraversalVisitor.
+
+The Classes:
+- DebugNoSuchComponent
+- DebugNoSuchCompositum
+are otherwise "empty" Implementations of leaf- and non-leaf components for the purpose giving the visitor something
+basic (and side effect free) to visit and print.

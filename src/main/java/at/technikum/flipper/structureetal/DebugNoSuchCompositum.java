@@ -3,7 +3,12 @@ package at.technikum.flipper.structureetal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DebugNoSuchCompositum implements Compositum{
+/**
+ * An implementation of Compositum with the purpose of testing
+ * the related visitor and compositum architecture.
+ * No pinball-related functionality.
+ */
+public class DebugNoSuchCompositum implements Compositum {
 
     private final List<Component> components = new ArrayList<>();
     private final String name;
