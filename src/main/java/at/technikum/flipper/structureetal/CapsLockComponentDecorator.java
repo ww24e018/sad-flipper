@@ -19,7 +19,7 @@ public class CapsLockComponentDecorator implements Component{
 
     @Override
     public void accept(ComponentVisitor visitor) {
-        component.accept(visitor);
+        visitor.visit(this); // calling component.visit(visitor) would mean decorator invisible to visitor
     }
 
     @Override
