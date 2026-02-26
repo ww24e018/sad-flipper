@@ -4,6 +4,7 @@ import at.technikum.flipper.PinballMachine;
 import at.technikum.flipper.commands.Command;
 import at.technikum.flipper.commands.NoOpCommand;
 import at.technikum.flipper.input.Button;
+import at.technikum.flipper.input.ConsolePrintln;
 
 public class NoCreditState implements MachineRunState{
 
@@ -20,8 +21,12 @@ public class NoCreditState implements MachineRunState{
     }
 
     @Override
-    public Command reactionToButtonPress(Button button) {
-        // no credit means no movement
-        return NoOpCommand.getInstance();
+    public void handleRightButtonPress() {
+        System.out.println(".. nothing happens.");
+    }
+
+    @Override
+    public void handleLeftButtonPress() {
+        System.out.println(".. nothing happens.");
     }
 }

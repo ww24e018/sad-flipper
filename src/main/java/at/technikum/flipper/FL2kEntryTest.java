@@ -30,6 +30,10 @@ public class FL2kEntryTest {
         firstCompTraversalTest();
         tryingTheUppercaseDecorator();
 
+        // Now the runLoopSimulation starts
+
+        super2k.runLoopSimulation();
+
 
     }
 
@@ -72,7 +76,6 @@ public class FL2kEntryTest {
         myFirstVisitor
                 .resetThreadUnsafeIterationDepthCounter()
                 .visit(mySecondCompositum);
-
     }
 
     private static Command testPrintBanners(AbstractBannerFactory bannerFactory) {

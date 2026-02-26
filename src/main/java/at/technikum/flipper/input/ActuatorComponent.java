@@ -1,0 +1,6 @@
+package at.technikum.flipper.input;
+
+import at.technikum.flipper.structureetal.Component;
+
+public interface ActuatorComponent extends Actuator, Component {
+}

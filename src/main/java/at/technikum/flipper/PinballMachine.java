@@ -1,5 +1,6 @@
 package at.technikum.flipper;
 
+import at.technikum.flipper.input.ActuatorComponent;
 import at.technikum.flipper.runstate.MachineRunState;
 
 public interface PinballMachine {
@@ -11,4 +12,8 @@ public interface PinballMachine {
     default  String getVersionString() {
         return "Flipper, by Flippers (Inc.)";
     }
+
+    ActuatorComponent getLeftFlipperActuator();
+    ActuatorComponent getRightFlipperActuator();
+
 }

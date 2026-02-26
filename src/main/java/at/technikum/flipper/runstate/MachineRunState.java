@@ -5,5 +5,6 @@ import at.technikum.flipper.input.Button;
 
 public interface MachineRunState {
     void handleCoinInsertion();
-    Command reactionToButtonPress(Button button);
+    void handleRightButtonPress();
+    void handleLeftButtonPress();
 }
