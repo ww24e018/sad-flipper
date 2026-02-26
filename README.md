@@ -1,5 +1,9 @@
 reboot of sad-flipper with pre-scaffold version of slm-t3
 
+See bottom for a list or work-not-done.
+
+Run a interactive flipper2k simulation by running `main` in `FL2kEntryTest` (if you want).
+
 # Abstract Factory for Banner-Font
 
 in flipper.output.ascii there are interface definitions
@@ -70,5 +74,36 @@ The Classes:
 are otherwise "empty" Implementations of leaf- and non-leaf components for the purpose giving the visitor something
 basic (and side effect free) to visit and print.
 
-# Other (State and later)
+# State
+
+There is a MachineRunState.
+
+# Run loop
+
+`SuperPinballMachine2000` has a `public void runLoopSimulation()` method.
+The `switch()` in there I find interesting in that it first
+- does a roundabout into Button subclass to simulate a press 
+- which uses java.lang.reflect to invoke a method in its meditor (the `SuperPinballMachine2000` itself) 
+- with the more specific subclass it has
+- which is only a few lines up in the code.
+
+That roundabout then calls into the `machineState` which, depending on which kind of state is 
+referenced at that time, 
+- might only write an output *OR*
+- call an object with lots of implemented interfaces to invoke a constructed-at-construction chain-command, consisting of
+  - a command writing to stdout
+  - a command waiting a few milliseconds
+  - a command writing something else to stdout.
+
+At which point deadlines demanded finalizing the README.md
+
+# "TODO"
+
+Unimplemented ATM: 
+- Leaving the playing state by simulating a ball-entering-sink event.
+- A component tree that simulates lights and noice and animated blinkenlights.
+- Removing the (deprecated) `SuperPinballMachine2000InputMediator` implementation
+- Refactoring Button in the direction of being an interface
+- ...
+
 
